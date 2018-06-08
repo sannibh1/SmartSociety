@@ -3,6 +3,7 @@ package com.example.pranav.smartsociety;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -38,7 +39,7 @@ import static android.Manifest.permission.READ_CONTACTS;
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
-
+    private static Button button;
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -92,6 +93,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+        onClickButton();
     }
 
     private void populateAutoComplete() {
@@ -345,6 +348,22 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
+    }
+
+
+    public void onClickButton(){
+        button = findViewById(R.id.signupbutton);
+        button.setOnClickListener(
+                new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(".SignUp");
+                        startActivity(intent);
+                        //TextView result = findViewById(R.id.printResult);
+                        //result.setText(Float.toString(resultPrint));
+                    }
+                }
+        );
     }
 }
 
