@@ -1,0 +1,22 @@
+tables : smartSociety
+
+1:userInfo/signUpInfo
+mobileNo(user name) number primaryKey
+firstName text unique not null
+lastName text not null
+houseNo number not null
+password password not null
+
+2:clubHouseBooking
+mobileNo number foreignKey
+bookDate date unique not null
+
+3:swimmingPoolBooking
+mobileNo number foreignKey
+firstName text unique not null
+gender text range(Male,Female,Kid)
+
+4:gymBooking
+mobileNo number foreignKey
+firstName text unique not null
+gender text range(Male,Female)
