@@ -1,22 +1,24 @@
-tables : smartSociety
+database name : smartsociety
 
-1:userInfo/signUpInfo
-mobileNo(user name) number primaryKey
-firstName text unique not null
-lastName text not null
-houseNo number not null
+1:userinfo
+mobileno number primarykey
+firstname text unique not null
+lastname text not null
+houseno number not null
 password password not null
 
-2:clubHouseBooking
-mobileNo number foreignKey
-bookDate date unique not null
+2:clubbooking
+mobileno number foreignKey
+bookdate date unique not null
 
-3:swimmingPoolBooking
-mobileNo number foreignKey
-firstName text unique not null
+3:swimpoolbooking
+mobileno number foreignKey
+firstname text unique not null
 gender text range(Male,Female,Kid)
 
-4:gymBooking
-mobileNo number foreignKey
-firstName text unique not null
+4:gymbooking
+mobileno number foreignKey
+firstname text unique not null
 gender text range(Male,Female)
+
+// save this folder in path  C:\xampp\mysql\data
