@@ -25,7 +25,7 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editTextUsername, editTextPassword;
-    private Button buttonLogin;
+    private Button buttonLogin,buttonRegister;
     private ProgressDialog progressDialog;
 
     @Override
@@ -42,11 +42,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         editTextUsername = (EditText) findViewById(R.id.editTextUsername);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
+        buttonRegister=(Button) findViewById(R.id.buttonRegister);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait...");
 
         buttonLogin.setOnClickListener(this);
+        buttonRegister.setOnClickListener(this);
 
     }
 
@@ -117,6 +119,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         if(view == buttonLogin){
             userLogin();
+        }
+        if(view == buttonRegister){
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
     }
 }

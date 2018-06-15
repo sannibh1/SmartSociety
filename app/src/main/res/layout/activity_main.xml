@@ -61,7 +61,7 @@
             android:text="Register User" />
     </LinearLayout>
 
-    <TextView
+    <!--<TextView
         android:id="@+id/textViewLogin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -69,5 +69,5 @@
         android:text="Already Registered? \n Click Here to Login"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
-
+-->
 </RelativeLayout>

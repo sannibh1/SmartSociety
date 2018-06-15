@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonRegister;
     private ProgressDialog progressDialog;
 
-    private TextView textViewLogin;
+   // private TextView textViewLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +48,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editTextUsername = (EditText) findViewById(R.id.editTextUsername);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
 
-        textViewLogin = (TextView) findViewById(R.id.textViewLogin);
+     //   textViewLogin = (TextView) findViewById(R.id.textViewLogin);
 
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
 
         progressDialog = new ProgressDialog(this);
 
         buttonRegister.setOnClickListener(this);
-        textViewLogin.setOnClickListener(this);
+       // textViewLogin.setOnClickListener(this);
     }
 
     private void registerUser() {
@@ -77,6 +77,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             JSONObject jsonObject = new JSONObject(response);
 
                             Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+
+                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -110,7 +112,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if (view == buttonRegister)
             registerUser();
-        if(view == textViewLogin)
-            startActivity(new Intent(this, LoginActivity.class));
     }
 }
