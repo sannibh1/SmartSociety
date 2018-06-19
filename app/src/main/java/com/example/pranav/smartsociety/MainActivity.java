@@ -27,7 +27,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    private EditText editTextUsername, editTextEmail, editTextPassword;
+    private EditText editTextMobileNo, editTextEmail, editTextPassword, editTextFirstName, editTextLastName, editTextHouseNo;
     private Button buttonRegister;
     private ProgressDialog progressDialog;
 
@@ -44,9 +44,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        editTextUsername = (EditText) findViewById(R.id.editTextUsername);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        editTextMobileNo = (EditText) findViewById(R.id.editMobileNo);
+        editTextFirstName = (EditText) findViewById(R.id.editFirstName);
+        editTextLastName = (EditText) findViewById(R.id.editLastName);
+        editTextHouseNo = (EditText) findViewById(R.id.editHouseNo);
+        editTextEmail = (EditText) findViewById(R.id.editEmail);
+        editTextPassword = (EditText) findViewById(R.id.editPassword);
 
      //   textViewLogin = (TextView) findViewById(R.id.textViewLogin);
 
@@ -59,8 +62,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void registerUser() {
+        final String mobileno = editTextMobileNo.getText().toString().trim();
+        final String firstname = editTextFirstName.getText().toString().trim();
+        final String lastname = editTextLastName.getText().toString().trim();
+        final String houseno = editTextHouseNo.getText().toString().trim();
         final String email = editTextEmail.getText().toString().trim();
-        final String username = editTextUsername.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();
 
         progressDialog.setMessage("Registering user...");
@@ -78,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                             Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
 
-                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                            startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -95,7 +101,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("username", username);
+                params.put("mobileno", mobileno);
+                params.put("firstname",firstname);
+                params.put("lastname",lastname);
+                params.put("houseno",houseno);
                 params.put("email", email);
                 params.put("password", password);
                 return params;
